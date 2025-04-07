@@ -1,11 +1,9 @@
 import "../styles/cart.css";
 import "../styles/checkoutinfo.css";
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DaumPostcode from "react-daum-postcode";
-import { useOrder } from '../hooks/useOrder.js';
 import { getOrderList, paymentKakaoPay } from "../services/orderApi.js";
-import axios from "axios";
 
 export default function CheckoutInfo() {
     const dispatch = useDispatch();
@@ -13,8 +11,6 @@ export default function CheckoutInfo() {
     const totalPrice = useSelector(state => state.cart.totalPrice);
     const orderList = useSelector(state => state.order.orderList);
     const member = useSelector(state => state.order.member);
-    
-    // const { getOrderList, paymentKakaoPay } = useOrder();
 
     const [zipcode, setZipcode] = useState("");
     const [address, setAddress] = useState("");
@@ -49,7 +45,7 @@ export default function CheckoutInfo() {
             
             // const id = localStorage.getItem("user_id");        
             // try {
-            //     const response = await axios.post("http://43.200.163.45:9000/payment/qr", {
+            //     const response = await axios.post("http://54.180.32.224:9000/payment/qr", {
             //         id:id,
             //         item_name: "테스트 상품",
             //         total_amount: 1000, // 결제 금액 (KRW)

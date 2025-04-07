@@ -1,8 +1,5 @@
 import React, { useContext, useEffect, useRef } from "react";
-// import { AuthContext } from '../auth/AuthContext.js';
-// import { CartContext } from "../context/CartContext.js";
 import { Link, useNavigate } from "react-router-dom";
-// import { useCart } from "../hooks/useCart.js";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
 import { getCartList, clearCartList, updateCartList, deleteCartItem } from "../services/cartApi.js";

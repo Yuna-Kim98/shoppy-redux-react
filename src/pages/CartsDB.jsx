@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { AuthContext } from "../auth/AuthContext.js";
 import { useNavigate } from "react-router-dom";
 
 export default function Carts({refreshStorage}) {
     const navigate = useNavigate();
-    const { isLoggedIn } = useContext(AuthContext);
+    const isLoggedIn = useSelector(state => state.login.isLoggedIn);
 
     
     /** 장바구니 아이템 저장 : 배열 */
@@ -26,7 +25,7 @@ export default function Carts({refreshStorage}) {
     useEffect(()=>{
         if(pids.length > 0){
             axios
-            .post("http://43.200.163.45:9000/product/cartItems", {"pids" : pids})
+            .post("http://54.180.32.224:9000/product/cartItems", {"pids" : pids})
             .then(res =>{
                 //cartItems에 res.data의 정보 추가
                 const updateCartList = cartList.map((item, i) => {
@@ -62,7 +61,7 @@ export default function Carts({refreshStorage}) {
         //1. 로그인 여부 체크
         if (isLoggedIn) {
             axios
-                .post("http://43.200.163.45:9000/cart/add", formData)
+                .post("http://54.180.32.224:9000/cart/add", formData)
                 .then((res) => {
                     // console.log(res.data)
                     if (res.data.result_rows) {
